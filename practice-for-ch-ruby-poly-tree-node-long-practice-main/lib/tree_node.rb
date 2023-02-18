@@ -2,6 +2,10 @@ class PolyTreeNode
 
     attr_reader :value, :children, :parent
 
+    # def self.root_node(position)
+    #     @kpf = KnightPathFinder.new(position)
+    # end
+
     def initialize(value, children = [], parent = nil )
         @value = value
         @children = []

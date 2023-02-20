@@ -71,3 +71,22 @@ end
 knight1 = KnightPathFinder.new([0,0])
 p knight1.build_move_tree([3,3])
 p knight1.considered_positions
+heyeeyeeyyeyah
+10000
+cool-doge-reverse
+
+
+
+#this is a test
+
+
+
+
+
+
+
+
+
+
+
+

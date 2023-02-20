@@ -43,7 +43,7 @@ class KnightPathFinder
         until queue.empty?
             first = queue.shift
             # new_move_pos => array
-            
+
             # initialize all values as poly tree node
             # assign first as parent to array
 

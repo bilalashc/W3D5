@@ -16,7 +16,7 @@ class KnightPathFinder
         valid_moves.reject { |pos| pos[0] < 0 || pos[1] < 0 }
     end
     
-    
+        
     
     def initialize(starting_position)
         @root_node = Polytree.new(starting_position)

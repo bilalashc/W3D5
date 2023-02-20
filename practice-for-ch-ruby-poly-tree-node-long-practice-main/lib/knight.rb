@@ -2,6 +2,8 @@ require_relative "tree_node.rb"
 
 class KnightPathFinder
 
+    attr_reader :considered_positions, :move_tree
+
     def self.valid_moves(pos)
         possible_moves = [[-2, 1], [-2, -1], [-1, 2], [-1, -2], [1, -2], [1, 2], [2, -1], [2, 1]] 
 
@@ -17,29 +19,40 @@ class KnightPathFinder
     
     
     def initialize(starting_position)
+        @root_node = Polytree.new(starting_position)
         @move_tree = [starting_position]
-        @considered_positions = [starting_position]
+        @considered_positions = [@root_node]
     end 
 
     def find_path(position)
-        @move_tree << position
+        
     end
 
     def new_move_positions(position)
-        KnightPathFinder.valid_moves(last_position).include?(position) && !@considered_positions.include?(position)
+        possible_moves = KnightPathFinder.valid_moves(position)
+        result = possible_moves.reject do |move|
+                    @considered_positions.include?(move)
+                 end
+        @considered_positions += result
+        return result
+    end
+    # initilizing tree nodes
+    # code will end by itself because queue empty
+    def build_move_tree
+        queue = [@root_node] 
+        until queue.empty?
+            first = queue.shift
+            # new_move_pos => array
+            
+            # initialize all values as poly tree node
+            # assign first as parent to array
+
+            queue.concat(new_move_positions(first))
+        end
+
     end
 
-    # possible_moves = [[-2, 1], [-2, -1], [-1, 2], [-1, -2], [1, -2], [1, 2], [2, -1], [2, 1]] 
-
-    # valid_moves = (0...possible_moves.length).each do |x|
-    #                 (0...possible_moves[x].length).each do |y|
-    #                     possible_moves[x][y] + [4,5][y]
-    #                 end
-    #             end
-
-
-
-
+  
 end 
 
 # def valid_pos(pos)
@@ -54,4 +67,7 @@ end
 #     valid_moves.reject { |pos| pos[0] < 0 || pos[1] < 0 }
 # end
 
-# p valid_pos([0,0])
+# p valid_pos([1,2])
+knight1 = KnightPathFinder.new([0,0])
+p knight1.build_move_tree([3,3])
+p knight1.considered_positions

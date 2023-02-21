@@ -6,7 +6,7 @@ class PolyTreeNode
     #     @kpf = KnightPathFinder.new(position)
     # end
 
-    def initialize(value, children = [], parent = nil )
+    def initialize(value, parent = nil, children = [])
         @value = value
         @children = []
         @parent = parent
